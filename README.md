@@ -232,6 +232,22 @@ public IActionResult Index()
 </div>
 ```
 
+### 步驟_8: 在 _Layout.cshtml 加入選單項目, 以利進行不同 HTTP REQUEST 測試
+在 _Layout.cshtml 加入選單項目, 以利進行不同 HTTP REQUEST 測試.  
+```html
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Sample" asp-action="Index" target="_blank">DI_request_1</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Sample" asp-action="Index" target="_blank">DI_request_2</a>
+</li>
+```
+
+### 步驟_9: 進行測試
+
+(1) HTTP REQUEST #1  
+
+(2) HTTP REQUEST #2  
 
 
 
