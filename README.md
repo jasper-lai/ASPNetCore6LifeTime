@@ -244,15 +244,43 @@ public IActionResult Index()
 ```
 
 ### 步驟_9: 進行測試
-
 (1) HTTP REQUEST #1  
+![REQUEST#1_1](https://github.com/jasper-lai/aspnetcore6lifetime/blob/master/pictures/request_1_1.png?raw=true)
+![REQUEST#1_2](https://github.com/jasper-lai/aspnetcore6lifetime/blob/master/pictures/request_1_2.png?raw=true)
 
 (2) HTTP REQUEST #2  
+![REQUEST#1_1](https://github.com/jasper-lai/aspnetcore6lifetime/blob/master/pictures/request_2_1.png?raw=true)
+![REQUEST#1_2](https://github.com/jasper-lai/aspnetcore6lifetime/blob/master/pictures/request_2_2.png?raw=true)
 
+### 步驟_10: 進行比對
+茲將比對結果, 整理如下表格.  
 
-
-
-
+<table>
+<thead>
+	<tr>
+		<th>服務類型</th>
+		<th>同次的 HTTP RQ</th>
+		<th>不同次的 HTTP RQ</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<td>Singleton</td>
+		<td>Same Instance</td>
+		<td>Same Instance</td>
+	</tr>
+	<tr>
+		<td>Scoped</td>
+		<td>Same Instance</td>
+		<td>New Instance</td>
+	</tr>
+	<tr>
+		<td>Transient</td>
+		<td>New Instance</td>
+		<td>New Instance</td>
+	</tr>
+</tbody>
+</table>
 
 
 ## 參考文件
