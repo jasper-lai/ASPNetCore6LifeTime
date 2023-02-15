@@ -21,7 +21,7 @@ AddScoped<ISampleService, SampleService>();
 AddTransient<ISampleService, SampleService>();
 ```
 
-* 解析: 在物件的建構子有引用介面時, DI Container 套件 會自動建立當初註冊時對應的類別物件實例 (instance), 例如: 
+* 解析: 在物件的建構子有引用介面時, DI Container 套件 會自動建立當初註冊時對應的類別物件實體 (instance), 例如: 
 ```csharp
 ISampleService _service;
 public SampleController(ISampeService service)
@@ -48,9 +48,10 @@ public SampleController(ISampeService service)
 ### 步驟_1: 建立 ASP.NET Core 6 MVC 專案
 採用 Visual Studio 2022 建立 ASP.NET Core 6 MVC 專案.  
 
-### 步驟_2: 加入 3 個 Interface
+### 步驟_2: 加入 3 個介面 - ISingletonService, IScopedService, ITransientService
 (1) 建立 Interfaces 資料夾
 (2) 加入 3 個 Interface: ISingletonService, IScopedService, ITransientService
+(3) GetCurrentGUID(): 用以識別是否為相同物件實體之用
 
 ```csharp
 namespace ASPNeetCore6LifeTime.Interfaces
@@ -82,7 +83,31 @@ namespace ASPNeetCore6LifeTime.Interfaces
 }
 ```
 
-### 步驟_3: 加入 3 個 Interface
+### 步驟_3: 加入類別 - SampleService 
+(1) 加入 Services 資料夾  
+(2) SampleService 實作介面 ISingletonService, IScopedService, ITransientService, 及  GetCurrentGUID() method  
+
+```csharp
+namespace ASPNetCore6LifeTime.Services
+{
+    using ASPNetCore6LifeTime.Interfaces;
+
+    public class SampleService : ISingletonService, IScopedService, ITransientService
+    {
+        Guid _currentGUId;
+        public SampleService()
+        {
+            _currentGUId = Guid.NewGuid();
+        }
+        public Guid GetCurrentGUID()
+        {
+            return _currentGUId;
+        }
+    }
+}
+```
+
+
 
 
 
