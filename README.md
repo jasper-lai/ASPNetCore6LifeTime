@@ -107,6 +107,57 @@ namespace ASPNetCore6LifeTime.Services
 }
 ```
 
+### 步驟_4: 加入 SampleController 及對應的 View
+(1) 加入 SampleController
+```csharp
+namespace ASPNetCore6LifeTime.Controllers
+{
+    using Microsoft.AspNetCore.Mvc;
+
+    public class SampleController : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+    }
+}
+```
+
+(2) 加入 Sample\Index.cshtml
+建立 View 的過程中 ( [新增檢視] / [Razor檢視], 範本選 Empty ), 會加入 Microsoft.VisualStudio.Web.CodeGeneration.Design 6.0.11 的套件.  
+
+```csharp
+@{
+    ViewData["Title"] = "Sample Index";
+}
+
+<h1>Sample Index</h1>
+```
+
+### 步驟_5: 註冊介面與類別的對應
+在 Program.cs 註冊介面與類別的對應.  
+
+```csharp
+using ASPNetCore6LifeTime.Interfaces;
+using ASPNetCore6LifeTime.Services;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
+// 註冊 (register) 3 個介面的實作, 並 using 相關的命名空間
+builder.Services.AddTransient<ITransientService, SampleService>();
+builder.Services.AddScoped<IScopedService, SampleService>();
+builder.Services.AddSingleton<ISingletonService, SampleService>();
+
+var app = builder.Build();
+```
+
+
+
+
 
 
 
