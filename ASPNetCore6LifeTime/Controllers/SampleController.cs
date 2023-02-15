@@ -32,6 +32,12 @@
 
         public IActionResult Index()
         {
+            ViewBag.transient1 = _tranService1.GetCurrentGUID().ToString();
+            ViewBag.transient2 = _tranService2.GetCurrentGUID().ToString();
+            ViewBag.scoped1 = _scopedService1.GetCurrentGUID().ToString();
+            ViewBag.scoped2 = _scopedService2.GetCurrentGUID().ToString();
+            ViewBag.singleton1 = _singletonService1.GetCurrentGUID().ToString();
+            ViewBag.singleton2 = _singletonService2.GetCurrentGUID().ToString();
             return View();
         }
     }

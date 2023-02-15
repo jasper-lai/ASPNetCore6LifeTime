@@ -185,6 +185,57 @@ public SampleController(ILogger<SampleController> logger,
 }
 ```
 
+### 步驟_7: 修訂 SampleController 的 Index() 及對應的 View
+(1) 修訂 SampleController 的 Index(): 呼叫各個物件實體的 GetCurrentGUID() method, 並透過 ViewBag 物件, 傳送給 View.  
+```csharp
+public IActionResult Index()
+{
+    ViewBag.transient1 = _tranService1.GetCurrentGUID().ToString();
+    ViewBag.transient2 = _tranService2.GetCurrentGUID().ToString();
+    ViewBag.scoped1 = _scopedService1.GetCurrentGUID().ToString();
+    ViewBag.scoped2 = _scopedService2.GetCurrentGUID().ToString();
+    ViewBag.singleton1 = _singletonService1.GetCurrentGUID().ToString();
+    ViewBag.singleton2 = _singletonService2.GetCurrentGUID().ToString();
+    return View();
+}
+```
+
+(2) 修訂 Sample/Index.cshtml
+```html
+<div class="text-center">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Service Type</th>
+                <th>First Instance Operation ID</th>
+                <th>Second Instance Operation ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="background-color:#e0ffdc;">Singleton</td>
+                <td style="background-color: #e0ffdc">@ViewBag.singleton1</td>
+                <td style="background-color: #e0ffdc">@ViewBag.singleton2</td>
+            </tr>
+            <tr>
+                <td>Scoped</td>
+                <td>@ViewBag.scoped1</td>
+                <td>@ViewBag.scoped2</td>
+            </tr>
+            <tr>
+                <td style="background-color: aliceblue">Transient</td>
+                <td style="background-color: aliceblue">@ViewBag.transient1</td>
+                <td style="background-color: aliceblue">@ViewBag.transient2</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+```
+
+
+
+
+
 
 
 

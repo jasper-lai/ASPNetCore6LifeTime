@@ -5,3 +5,31 @@
 
 <h1>Sample Index</h1>
 
+<div class="text-center">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Service Type</th>
+                <th>First Instance Operation ID</th>
+                <th>Second Instance Operation ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="background-color:#e0ffdc;">Singleton</td>
+                <td style="background-color: #e0ffdc">@ViewBag.singleton1</td>
+                <td style="background-color: #e0ffdc">@ViewBag.singleton2</td>
+            </tr>
+            <tr>
+                <td>Scoped</td>
+                <td>@ViewBag.scoped1</td>
+                <td>@ViewBag.scoped2</td>
+            </tr>
+            <tr>
+                <td style="background-color: aliceblue">Transient</td>
+                <td style="background-color: aliceblue">@ViewBag.transient1</td>
+                <td style="background-color: aliceblue">@ViewBag.transient2</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
